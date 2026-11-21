@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Successful — Check Your Email | Sushant Digital Products</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy-900: #1b2842;
+      --navy-700: #2f436b;
+      --cream-50: #fdfcf8;
+      --cream-100: #f8f5ee;
+      --gold-500: #c8963e;
+      --gold-600: #a67827;
+      --gold-100: #f6eedc;
+      --ink-900: #1d2433;
+      --ink-600: #4f5869;
+      --ink-400: #737c8c;
+      --white: #ffffff;
+      --border: #e5dfd3;
+      --green-600: #15803d;
+      --green-50: #f0fdf4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 80% 10%, #efe6d4 0%, var(--cream-100) 60%);
+      color: var(--ink-900);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .navbar {
+      background: rgba(253, 252, 248, 0.94);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+    }
+    .navbar__inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--navy-900);
+      text-decoration: none;
+      font-size: 0.98rem;
+    }
+    .brand__mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--navy-900);
+      color: #e2b866;
+      display: grid;
+      place-items: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      max-width: 620px;
+      width: 100%;
+      padding: 40px 32px;
+      box-shadow: 0 20px 50px rgba(27, 40, 66, 0.1);
+      text-align: center;
+    }
+
+    .icon-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--green-50);
+      border: 2px solid #bbf7d0;
+      color: var(--green-600);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold-600);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--navy-900);
+      font-size: clamp(1.7rem, 3.6vw, 2.25rem);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      color: var(--ink-600);
+      font-size: 1.02rem;
+      margin-bottom: 24px;
+    }
+
+    .email-highlight {
+      background: var(--gold-100);
+      border: 1px solid rgba(200, 150, 62, 0.45);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .email-highlight strong {
+      display: block;
+      color: var(--navy-900);
+      font-size: 0.96rem;
+      margin-bottom: 6px;
+    }
+    .email-highlight p {
+      font-size: 0.92rem;
+      color: var(--ink-600);
+    }
+
+    .steps {
+      list-style: none;
+      text-align: left;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 26px;
+      font-size: 0.93rem;
+      color: var(--ink-600);
+    }
+    .steps li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--cream-50);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--navy-900);
+      color: #e2b866;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      margin-top: 1px;
+    }
+
+    .payment-meta {
+      display: none;
+      font-size: 0.84rem;
+      color: var(--ink-400);
+      background: var(--cream-100);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+    }
+    .payment-meta strong { color: var(--navy-900); }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .btn--navy {
+      background: var(--navy-900);
+      color: var(--white);
+    }
+    .btn--navy:hover { background: var(--navy-700); transform: translateY(-2px); }
+    .btn--outline {
+      border: 1.5px solid var(--navy-900);
+      color: var(--navy-900);
+    }
+    .btn--outline:hover { background: var(--navy-900); color: var(--white); }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.84rem;
+      color: var(--ink-400);
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__mark">S</span>
+        <span>Sushant Digital Products</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="icon-circle" aria-hidden="true">✓</div>
+      <span class="eyebrow">Order Confirmed</span>
+      <h1>Thank You! Your Planner Is on Its Way to Your Email.</h1>
+      <p class="lead">
+        Your payment has been received. You will get your UPSC Study Planner PDF/ZIP download link directly through email.
+      </p>
+
+      <div class="email-highlight">
+        <strong>Check Your Email Inbox Now</strong>
+        <p id="emailMessage">
+          We have sent your instant download link to the email address you entered at checkout.
+        </p>
+      </div>
+
+      <ul class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <span>Open your email inbox and look for the delivery email from <strong>Dodo Payments / Sushant Digital Products</strong>.</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>If you do not see it within 2 minutes, please check your <strong>Spam</strong>, <strong>Junk</strong>, or <strong>Promotions</strong> folder.</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>Need help or entered the wrong email? Write to <a href="mailto:metangesushant7@gmail.com" style="color: var(--navy-900); font-weight: 600;">metangesushant7@gmail.com</a> with your Payment ID and we will send your file right away.</span>
+        </li>
+      </ul>
+
+      <div class="payment-meta" id="paymentMeta"></div>
+
+      <div class="actions">
+        <a href="index.html" class="btn btn--navy">Back to Home</a>
+        <a href="mailto:metangesushant7@gmail.com?subject=UPSC%20Study%20Planner%20Download%20Help" class="btn btn--outline">Contact Support</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Sushant Digital Products. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    const paymentId = params.get("payment_id");
+
+    if (email) {
+      const safeEmail = email.replace(/[&<>"']/g, (m) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
+      document.getElementById("emailMessage").innerHTML =
+        `We have sent your instant download link to <strong>${safeEmail}</strong>.`;
+    }
+
+    if (paymentId) {
+      const safeId = paymentId.replace(/[&<>"']/g, (m) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
+      const metaEl = document.getElementById("paymentMeta");
+      metaEl.style.display = "block";
+      metaEl.innerHTML = `Payment Reference ID: <strong>${safeId}</strong>`;
+    }
+  </script>
+</body>
+</html>
