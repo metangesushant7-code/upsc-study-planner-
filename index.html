@@ -1063,7 +1063,7 @@
               <button type="button" class="btn btn--navy btn--full buy-btn" data-product="printable_13">
                 Buy Printable Edition — ₹99
               </button>
-              <div class="checkout-note">Secure checkout powered by Dodo Payments</div>
+              <div class="checkout-note">Instant delivery — your PDF/ZIP download link will be sent to your email after payment.</div>
             </div>
           </article>
 
@@ -1095,7 +1095,7 @@
               <button type="button" class="btn btn--gold btn--full buy-btn" data-product="fillable_13">
                 Buy Fillable Edition — ₹149
               </button>
-              <div class="checkout-note">Secure checkout powered by Dodo Payments</div>
+              <div class="checkout-note">Instant delivery — your PDF/ZIP download link will be sent to your email after payment.</div>
             </div>
           </article>
         </div>
@@ -1136,7 +1136,7 @@
               <button type="button" class="btn btn--outline btn--full buy-btn" data-pack-btn="daily" data-product="daily_printable">
                 Buy Daily Printable (30 Pages) — ₹79
               </button>
-              <div class="checkout-note">Secure checkout powered by Dodo Payments</div>
+              <div class="checkout-note">Instant delivery — your PDF/ZIP download link will be sent to your email after payment.</div>
             </div>
           </article>
 
@@ -1173,7 +1173,7 @@
               <button type="button" class="btn btn--outline btn--full buy-btn" data-pack-btn="weekly" data-product="weekly_printable">
                 Buy Weekly Printable (30 Pages) — ₹79
               </button>
-              <div class="checkout-note">Secure checkout powered by Dodo Payments</div>
+              <div class="checkout-note">Instant delivery — your PDF/ZIP download link will be sent to your email after payment.</div>
             </div>
           </article>
         </div>
@@ -1421,7 +1421,13 @@
           alert(`Dodo Payments checkout link for "${key}" is not set yet. Paste your live checkout URL inside PRODUCTS_CONFIG in index.html.`);
           return;
         }
-        window.location.href = product.checkoutUrl;
+        let targetUrl = product.checkoutUrl;
+        if (window.location.protocol.startsWith("http")) {
+          const thankYouUrl = new URL("thank-you.html", window.location.href).href;
+          const sep = targetUrl.includes("?") ? "&" : "?";
+          targetUrl += sep + "redirect_url=" + encodeURIComponent(thankYouUrl);
+        }
+        window.location.href = targetUrl;
       });
     });
 
